@@ -10,141 +10,221 @@
             color: #e0e0e0;
             font-family: "Segoe UI", Arial, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             line-height: 1.6;
         }
         .container {
             max-width: 900px;
             margin: 0 auto;
             background: #111;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.2);
-            border: 1px solid #00ff00;
+            min-height: 100vh;
+        }
+        header {
+            background: linear-gradient(to bottom, #000, #111);
+            padding: 30px;
+            text-align: center;
+            border-bottom: 2px solid #00ff00;
         }
         h1 {
-            text-align: center;
             color: #00ff00;
-            font-size: 2.8em;
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px #00ff00;
+            font-size: 3em;
+            margin: 0;
+            text-shadow: 0 0 15px #00ff00;
         }
-        h2 {
+        .subtitle {
+            font-style: italic;
             color: #00ff41;
-            border-bottom: 2px solid #00ff00;
-            padding-bottom: 10px;
-            margin-top: 50px;
+            margin-top: 10px;
         }
         .warning {
             background: #330000;
             color: #ff5555;
             padding: 15px;
-            border-radius: 10px;
             text-align: center;
             font-weight: bold;
-            margin-bottom: 30px;
             border: 1px solid #ff0000;
         }
-        p {
-            text-align: justify;
+        /* Przyciski rozdziałów */
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            background: #000;
+            padding: 15px 0;
+            gap: 10px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #333;
         }
-        .highlight {
+        .tab-button {
+            background: #111;
             color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 12px 20px;
+            cursor: pointer;
             font-weight: bold;
+            transition: all 0.3s;
+            border-radius: 8px;
         }
+        .tab-button:hover {
+            background: #00ff00;
+            color: #000;
+        }
+        .tab-button.active {
+            background: #00ff00;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.6);
+        }
+        /* Treść rozdziałów */
+        .tab-content {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.5s;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h2 {
+            color: #00ff41;
+            border-bottom: 2px solid #00ff00;
+            padding-bottom: 10px;
+        }
+        .highlight { color: #00ff00; font-weight: bold; }
         footer {
             text-align: center;
-            margin-top: 60px;
+            padding: 30px;
             color: #666;
             font-size: 0.9em;
-        }
-        @media (max-width: 768px) {
-            .container { padding: 20px; }
-            h1 { font-size: 2.2em; }
+            border-top: 1px solid #333;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Zabawy pod łóżkiem</h1>
-        <p style="text-align:center; font-style:italic; color:#00ff41;">
-            Vipeerek × Pagriś • AU • 18+ • mroczne, namiętne, bez litości
-        </p>
+        <header>
+            <h1>Zabawy pod łóżkiem</h1>
+            <p class="subtitle">Vipeerek × Pagriś • AU • 18+ • mroczne, namiętne, bez litości</p>
+        </header>
 
         <div class="warning">
             ⚠️ UWAGA: TREŚĆ 18+ • MOCNE SCENY SEKSUALNE • BDSM • DOMINACJA • JĘZYK WULGARNY ⚠️<br>
             Czytasz na własną odpowiedzialność.
         </div>
 
-        <h2>Rozdział 1: IronAge – noc, w której wszystko się zaczęło</h2>
-        <p>
-            Była 3 w nocy, serwer <span class="highlight">IronAge</span> świecił pustkami. Większość graczy już spała, ale Pagriś siedział przy kompie z kubkiem zimnej kawy i testował nową, eksperymentalną wersję <span class="highlight">SKlaunchera</span>, którą dostał prosto od devów. Nagle na czacie globalnym pojawiła się wiadomość:<br><br>
-            <strong>[Vipeerek] » pagris co ty tu jeszcze robisz o tej porze</strong><br><br>
-            Pagriś zamarł. Wszyscy na IronAge bali się Vipeereka – jaszczur z adminrightsami, który banował za spojrzenie i potrafił znaleźć cię nawet na prywatnym endzie.<br><br>
-            <strong>[Pagriś] » testuję SKlaunchera v2.1-beta… a ty?</strong><br>
-            <strong>[Vipeerek] » obserwuję ciebie</strong><br><br>
-            I wtedy Pagriś poczuł to pierwszy raz – gorąco w brzuchu, jakby ktoś wlał mu do żył rozżarzony miód.<br><br>
-            Pięć minut później miał już prywatną wiadomość:<br>
-            <strong>[Vipeerek] » tp do mnie. /tpaccept Pagriś Vipeerek</strong><br><br>
-            Nie wiedział dlaczego, ale kliknął „tak”.
-        </p>
+        <!-- Przyciski rozdziałów -->
+        <div class="tabs">
+            <button class="tab-button active" onclick="openTab(event, 'ch1')">Rozdział 1</button>
+            <button class="tab-button" onclick="openTab(event, 'ch2')">Rozdział 2</button>
+            <button class="tab-button" onclick="openTab(event, 'ch3')">Rozdział 3</button>
+            <button class="tab-button" onclick="openTab(event, 'ch4')">Rozdział 4</button>
+            <button class="tab-button" onclick="openTab(event, 'ch5')">Rozdział 5 (18+)</button>
+        </div>
 
-        <h2>Rozdział 2: Teleport i pierwsze dotknięcie</h2>
-        <p>
-            Spawn IronAge był pusty. Tylko oni dwaj.<br><br>
-            Vipeerek stał w full prot 4 netherite, ale hełm miał zdjęty – zielone, pionowe źrenice, łuski na policzkach, długi ogon machający nerwowo.<br><br>
-            – Na kolana – powiedział cicho głosem, który brzmiał jak szelest łusek po szkle.<br><br>
-            Pagriś upuścił miecz. Kolana ugięły się same.<br><br>
-            Jaszczur podszedł tak blisko, że Pagriś czuł chłód jego zbroi i gorąco oddechu. Pazury Vipeereka musnęły policzek chłopaka – delikatnie, ale z groźbą, że w każdej chwili mogą rozedrzeć skórę.<br><br>
-            – Lubisz być obserwowany, Pagriś? – wyszeptał.<br>
-            – T-tak…<br>
-            – To dobrze. Bo od dzisiaj będziesz tylko mój.
-        </p>
+        <!-- Rozdział 1 -->
+        <div id="ch1" class="tab-content active">
+            <h2>Rozdział 1: IronAge – noc, w której wszystko się zaczęło</h2>
+            <p>
+                Była 3 w nocy, serwer <span class="highlight">IronAge</span> świecił pustkami. Większość graczy już spała, ale Pagriś siedział przy kompie z kubkiem zimnej kawy i testował nową, eksperymentalną wersję <span class="highlight">SKlaunchera</span>, którą dostał prosto od devów. Nagle na czacie globalnym pojawiła się wiadomość:<br><br>
+                <strong>[Vipeerek] » Pagriś co ty tu jeszcze robisz o tej porze</strong><br><br>
+                Pagriś zamarł. Wszyscy na IronAge bali się Vipeereka – jaszczur z adminrightsami, który banował za spojrzenie i potrafił znaleźć cię nawet na prywatnym endzie.<br><br>
+                <strong>[Pagriś] » testuję SKlaunchera v2.1-beta… a ty?</strong><br>
+                <strong>[Vipeerek] » obserwuję ciebie</strong><br><br>
+                I wtedy Pagriś poczuł to pierwszy raz – gorąco w brzuchu, jakby ktoś wlał mu do żył rozżarzony miód.<br><br>
+                Pięć minut później miał już prywatną wiadomość:<br>
+                <strong>[Vipeerek] » tp do mnie. /tpaccept Pagriś Vipeerek</strong><br><br>
+                Nie wiedział dlaczego, ale kliknął „tak”.
+            </p>
+        </div>
 
-        <h2>Rozdział 3: Noc w bazie pod bedrockiem</h2>
-        <p>
-            Vipeerek teleportował go do swojej tajnej bazy – pod samym bedrockiem serwera, miejsce, o którym nikt nie wiedział. Czarne ściany z obsydianu, czerwone pochodnie, łóżko z czarnej wełny pośrodku.<br><br>
-            – Rozbieraj się – rozkaz brzmiał spokojnie, ale nie znosił sprzeciwu.<br><br>
-            Pagriś drżącymi rękami zdejmował zbroję kawałek po kawałku. Kiedy został tylko w bokserce, Viper pchnął go na łóżko.<br><br>
-            Jaszczur wszedł na niego powoli, łuski szorstkie na nagiej skórze Pagrysia. Ogon owinął się wokół jego nadgarstka jak żywa kajdanka.<br><br>
-            – Powiedz to – zażądał Viper, gryząc delikatnie w szyję.<br>
-            – Jestem twój…<br>
-            – Głośniej.<br>
-            – Jestem tylko twój, Vipeerek!<br><br>
-            Wtedy pocałunek – brutalny, z zębami, smakujący krwią i pożądaniem.
-        </p>
+        <!-- Rozdział 2 -->
+        <div id="ch2" class="tab-content">
+            <h2>Rozdział 2: Teleport i pierwsze dotknięcie</h2>
+            <p>
+                Spawn IronAge był pusty. Tylko oni dwaj.<br><br>
+                Vipeerek stał w full prot 4 netherite, ale hełm miał zdjęty – zielone, pionowe źrenice, łuski na policzkach, długi ogon machający nerwowo.<br><br>
+                – Na kolana – powiedział cicho głosem, który brzmiał jak szelest łusek po szkle.<br><br>
+                Pagriś upuścił miecz. Kolana ugięły się same.<br><br>
+                Jaszczur podszedł tak blisko, że Pagriś czuł chłód jego zbroi i gorąco oddechu. Pazury Vipeereka musnęły policzek chłopaka – delikatnie, ale z groźbą, że w każdej chwili mogą rozedrzeć skórę.<br><br>
+                – Lubisz być obserwowany, Pagriś? – wyszeptał.<br>
+                – T-tak…<br>
+                – To dobrze. Bo od dzisiaj będziesz tylko mój.
+            </p>
+        </div>
 
-        <h2>Rozdział 4: Coraz głębiej</h2>
-        <p>
-            Od tamtej nocy Pagriś logował się codziennie o 2:00. Serwer stał się ich prywatnym piekłem i rajem.<br><br>
-            Viper wiązał go linami z wełny, kneblował własnymi skarpetkami, gryzł do krwi, a Pagriś błagał o więcej.<br><br>
-            Na czacie globalnym udawali, że się nienawidzą – Vipeerek banował go na 5 minut „za spam”, a potem w prywatnej bazie karał za każde „proszę o unbana”.<br><br>
-            Aż pewnej nocy Viper powiedział:<br>
-            – Wyłącz <span class="highlight">SKlaunchera</span>. Przyjeżdżaj w realu. Teraz.
-        </p>
+        <!-- Rozdział 3 -->
+        <div id="ch3" class="tab-content">
+            <h2>Rozdział 3: Noc w bazie pod bedrockiem</h2>
+            <p>
+                Vipeerek teleportował go do swojej tajnej bazy – pod samym bedrockiem serwera, miejsce, o którym nikt nie wiedział. Czarne ściany z obsydianu, czerwone pochodnie, łóżko z czarnej wełny pośrodku.<br><br>
+                – Rozbieraj się – rozkaz brzmiał spokojnie, ale nie znosił sprzeciwu.<br><br>
+                Pagriś drżącymi rękami zdejmował zbroję kawałek po kawałku. Kiedy został tylko w bokserce, Viper pchnął go na łóżko.<br><br>
+                Jaszczur wszedł na niego powoli, łuski szorstkie na nagiej skórze Pagrysia. Ogon owinął się wokół jego nadgarstka jak żywa kajdanka.<br><br>
+                – Powiedz to – zażądał Viper, gryząc delikatnie w szyję.<br>
+                – Jestem twój…<br>
+                – Głośniej.<br>
+                – Jestem tylko twój, Vipeerek!<br><br>
+                Wtedy pocałunek – brutalny, z zębami, smakujący krwią i pożądaniem.
+            </p>
+        </div>
 
-        <h2>Rozdział 5: Pod łóżkiem – bez litości (18+)</h2>
-        <p>
-            Pagriś wszedł do mieszkania Vipeereka drżąc jak osika.<br><br>
-            Jaszczur nie powiedział ani słowa – złapał go za gardło, popchnął na podłogę i <strong>wciągnął pod łóżko</strong>. Ciasno, ciemno, kurz i zapach starego drewna. Idealnie.<br><br>
-            – Na czworaka – warknął.<br><br>
-            Pagriś posłuchał. Viper zdarł z niego spodnie jednym ruchem, pazury zostawiły czerwone ślady na biodrach.<br><br>
-            – Będziesz płakał – obiecał, plując sobie na palce i wchodząc w niego <strong>bez żadnego przygotowania</strong>.<br><br>
-            Pagriś krzyknął – ból był ostry, palący, ale zaraz potem przyszła fala rozkoszy tak silna, że łzy same poleciały.<br><br>
-            Vipeerek wbijał się w niego mocno, głęboko, bez żadnej delikatności – biodra uderzały o pośladki z mokrym plaśnięciem, ogon owinął się wokół szyi Pagrysia i ściskał coraz mocniej.<br><br>
-            – Powiedz, do kogo należysz – warczał prosto do ucha, gryząc płatek tak mocno, że poszła krew.<br>
-            – Do ciebie… tylko do ciebie… kurwa, mocniej!<br><br>
-            Jaszczur przyspieszył – brutalne, zwierzęce pchnięcia, jakby chciał przebić go na wylot. Jedną ręką złapał włosy Pagrysia i odgiął mu głowę do tyłu, drugą drapał plecy do krwi.<br><br>
-            Pagriś doszedł pierwszy – głośno, bezwstydnie, całym ciałem drżąc pod łóżkiem jak w agonii. Viper nie zwolnił. Wepchnął się jeszcze głębiej, raz, drugi, trzeci – i wylał się w niego gorącym, długim strumieniem, warcząc coś niezrozumiałego w gardle.<br><br>
-            Przez chwilę leżeli tylko dysząc w ciasnocie – spoceni, posiniaczeni, szczęśliwi.<br><br>
-            – Następnym razem przyniesiesz smycz – wyszeptał Viper, liżąc krew z szyi Pagrysia.<br>
-            – Tak jest… panie jaszczurze.
-        </p>
+        <!-- Rozdział 4 -->
+        <div id="ch4" class="tab-content">
+            <h2>Rozdział 4: Coraz głębiej</h2>
+            <p>
+                Od tamtej nocy Pagriś logował się codziennie o 2:00. Serwer stał się ich prywatnym piekłem i rajem.<br><br>
+                Viper wiązał go linami z wełny, kneblował własnymi skarpetkami, gryzł do krwi, a Pagriś błagał o więcej.<br><br>
+                Na czacie globalnym udawali, że się nienawidzą – Vipeerek banował go na 5 minut „za spam”, a potem w prywatnej bazie karał za każde „proszę o unbana”.<br><br>
+                Aż pewnej nocy Viper powiedział:<br>
+                – Wyłącz <span class="highlight">SKlaunchera</span>. Przyjeżdżaj w realu. Teraz.
+            </p>
+        </div>
+
+        <!-- Rozdział 5 -->
+        <div id="ch5" class="tab-content">
+            <h2>Rozdział 5: Pod łóżkiem – bez litości (18+)</h2>
+            <p>
+                Pagriś wszedł do mieszkania Vipeereka drżąc jak osika.<br><br>
+                Jaszczur nie powiedział ani słowa – złapał go za gardło, popchnął na podłogę i <strong>wciągnął pod łóżko</strong>. Ciasno, ciemno, kurz i zapach starego drewna. Idealnie.<br><br>
+                – Na czworaka – warknął.<br><br>
+                Pagriś posłuchał. Viper zdarł z niego spodnie jednym ruchem, pazury zostawiły czerwone ślady na biodrach.<br><br>
+                – Będziesz płakał – obiecał, plując sobie na palce i wchodząc w niego <strong>bez żadnego przygotowania</strong>.<br><br>
+                Pagriś krzyknął – ból był ostry, palący, ale zaraz potem przyszła fala rozkoszy tak silna, że łzy same poleciały.<br><br>
+                Vipeerek wbijał się w niego mocno, głęboko, bez żadnej delikatności – biodra uderzały o pośladki z mokrym plaśnięciem, ogon owinął się wokół szyi Pagrysia i ściskał coraz mocniej.<br><br>
+                – Powiedz, do kogo należysz – warczał prosto do ucha, gryząc płatek tak mocno, że poszła krew.<br>
+                – Do ciebie… tylko do ciebie… kurwa, mocniej!<br><br>
+                Jaszczur przyspieszył – brutalne, zwierzęce pchnięcia, jakby chciał przebić go na wylot. Jedną ręką złapał włosy Pagrysia i odgiął mu głowę do tyłu, drugą drapał plecy do krwi.<br><br>
+                Pagriś doszedł pierwszy – głośno, bezwstydnie, całym ciałem drżąc pod łóżkiem jak w agonii. Viper nie zwolnił. Wepchnął się jeszcze głębiej, raz, drugi, trzeci – i wylał się w niego gorącym, długim strumieniem, warcząc coś niezrozumiałego w gardle.<br><br>
+                Przez chwilę leżeli tylko dysząc w ciasnocie – spoceni, posiniaczeni, szczęśliwi.<br><br>
+                – Następnym razem przyniesiesz smycz – wyszeptał Viper, liżąc krew z szyi Pagrysia.<br>
+                – Tak jest… panie jaszczurze.
+            </p>
+        </div>
 
         <footer>
             <p>Koniec.<br>(Albo dopiero początek ich zabaw pod łóżkiem…)</p>
             <p>© 2025 – fanfik tylko dla dorosłych</p>
         </footer>
     </div>
+
+    <script>
+        function openTab(evt, tabName) {
+            var i, tabcontent, tabbuttons;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tabbuttons = document.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
 </body>
 </html>
